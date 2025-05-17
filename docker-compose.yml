@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  cypress-mcp:
+    build: .
+    container_name: cypress-mcp
+    image: cypress-mcp:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - CYPRESS_RECORD_KEY=${CYPRESS_RECORD_KEY}
+      - OPENAI_API_KEY=${OPEN_AI_KEY}
+      - HEADLESS=true
+    restart: unless-stopped
